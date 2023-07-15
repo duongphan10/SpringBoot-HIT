@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Login</title>
+    <style>
+        body {
+            background-color: #ffc8f1;
+            font-family: Arial, sans-serif;
+        }
+        form {
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            max-width: 300px;
+            margin: auto;
+            margin-top: 50px;
+        }
+        h2 {
+            text-align: center;
+            color: blue;
+        }
+        input[type=text], input[type=password] {
+            width: 100%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            box-sizing: border-box;
+            border: none;
+            border-radius: 4px;
+            background-color: #f2f2f2;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 13px 20px;
+            margin: 18px 0 0 0;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 15px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        #error {
+            color: red;
+            text-align: center;
+        }
+        .signup {
+            text-align: center;
+            margin-top: 8px;
+        }
+        .signup a {
+            color: #4CAF50;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <h4 th:text="${messageErrLogin}" id="error"> </h4>
+    <form th:action="@{/login}" method="post">
+        <h2> HunterK </h2>
+        <label for="username"><b>Username</b></label>
+        <input type="text" th:value="${username}" placeholder="Enter your username" id="username" name="username" autocomplete="on" required>
+
+        <label for="password"><b>Password</b></label>
+        <input type="password" th:value="${password}" placeholder="Enter your password" id="password" name="password" required>
+
+        <button type="submit">Login</button>
+        <div class="signup" >
+            <p>No account? <a th:href="@{/signup}">Sign Up</a></p>
+        </div>
+    </form>
+</body>
+</html>

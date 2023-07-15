@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en"xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Edit User</title>
+    <style>
+        body {
+          background-color: #bfe9ff;
+          font-family: Arial, sans-serif;
+          color: #333;
+          padding: 20px;
+        }
+
+        h1 {
+          text-align: center;
+          margin-top: 0;
+        }
+
+        form {
+          max-width: 300px;
+          margin: 0 auto;
+          background-color: #fff;
+          padding: 20px;
+          border-radius: 5px;
+          box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+
+        label {
+          display: block;
+          margin-bottom: 10px;
+        }
+        #error {
+          color: red;
+          text-align: center;
+        }
+        input[type="text"], input[type="password"] {
+          display: block;
+          width: 95%;
+          padding: 10px;
+          margin-bottom: 20px;
+          border: none;
+          border-radius: 5px;
+          box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.1);
+          background-color: #f2f2f2;
+        }
+
+        button[type="submit"].confirm {
+            background-color: #4CAF50;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+        }
+
+        button[type="submit"].confirm:hover {
+            background-color: #2E8B57;
+        }
+
+        button[type="submit"].cancel {
+            background-color: #F00000;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+        }
+
+        button[type="submit"].cancel:hover {
+            background-color: #BB0000;
+        }
+        .button-container {
+            text-align: center;
+        }
+
+        .button-container button {
+            margin: 0 5px;
+        }
+    </style>
+</head>
+<body>
+    <h4><div th:text="${messageErrEdit}" id="error"></div></h4>
+
+    <h1>Edit User</h1>
+    <form th:action="@{/edit}" method="post">
+        <input type="hidden" th:value="${user.getId()}" id="id" name="id">
+
+        <label for="username"><b>Username:</b></label>
+        <input type="text" th:value="${user.getUsername()}" id="username" name="username" required>
+
+        <label for="password"><b>Password:</b></label>
+        <input type="text" th:value="${user.getPassword()}"  id="password" name="password" required>
+
+        <label for="fullname"><b>Fullname:</b></label>
+        <input type="text" th:value="${user.getFullname()}" id="fullname" name="fullname" required>
+
+        <div class="button-container">
+            <button type="submit" class="confirm">Confirm</button>
+
+            <form th:action="@{/store}" method="get">
+                <button type="submit" class="cancel">Cancel</button>
+            </form>
+        </div>
+    </form>
+
+</body>
+</html>

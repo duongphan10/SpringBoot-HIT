@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en"xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Sign Up</title>
+    <style>
+        body {
+            background-color: #bfe9ff;
+            font-family: Arial, sans-serif;
+            color: #333;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 0;
+        }
+
+        form {
+            max-width: 400px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+        #error {
+            color: red;
+            text-align: center;
+        }
+        input[type="text"], input[type="password"] {
+            display: block;
+            width: 95%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: none;
+            border-radius: 5px;
+            box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.1);
+            background-color: #f2f2f2;
+        }
+
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+            display: block;
+            margin: 0 auto;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #2E8B57;
+        }
+    </style>
+</head>
+<body>
+    <div th:text="${messageErrSignup}" id="error"></div>
+
+    <h1>Sign Up</h1>
+    <form th:action="@{/signup}" method="post">
+        <label for="username"><b>Username:</b></label>
+        <input type="text" id="username" name="username" placeholder="Enter a username" required>
+
+        <label for="password"><b>Password:</b></label>
+        <input type="password" id="password" name="password" placeholder="Enter a password" required>
+
+        <label for="fullname"><b>Fullname:</b></label>
+        <input type="text" id="fullname" name="fullname" placeholder="Enter your full name" required>
+
+        <input type="submit" value="Sign Up">
+    </form>
+</body>
+</html>
